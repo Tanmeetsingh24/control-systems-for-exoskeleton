@@ -7,6 +7,8 @@ Control-systems work for the **EASE (Assistive Exoskeleton)** project — gait-p
 **Author:** Tanmeet Singh Sachdeva · Control Systems Lead  
 **Institution:** UNSW Sydney · Mechatronic Engineering (Honours)
 
+**Thesis report:** [ThesisC_Tanmeet_Z5510198.pdf](docs/ThesisC_Tanmeet_Z5510198.pdf)
+
 > Team thesis project (EASE Exoskeleton). This repository is a curated public snapshot of firmware, simulations, and documentation from my control-systems contribution — not the full private team codebase.
 
 ---
@@ -44,7 +46,8 @@ The EASE exoskeleton assists lower-limb movement during walking. My thesis focus
 | [`firmware/ease-control-systems/`](firmware/ease-control-systems/) | ESP32-S3 PlatformIO / ESP-IDF project scaffold for HIL bring-up |
 | [`firmware/draft/`](firmware/draft/) | Early prototypes — PID tests, old 4-state FSM, gait plotting script |
 | [`matlab/`](matlab/) | Simulations — joint PID, exoskeleton FSM, battery discharge, fall detection |
-| [`docs/images/`](docs/images/) | Thesis figures — control architecture, HIL testing rig, gait cycle |
+| [`docs/`](docs/) | Thesis report (PDF) and figures |
+| [`docs/images/`](docs/images/) | Control architecture, HIL testing rig, gait cycle |
 | [`setup/`](setup/) | ESP-IDF devcontainer and Windows USB/WSL flashing guide |
 
 ---
