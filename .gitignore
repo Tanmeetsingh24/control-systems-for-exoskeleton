@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Arduino / PlatformIO
+.pio/
+.vscode/ipch/
+*.elf
+*.bin
+
+# MATLAB
+*.asv
+slprj/
+*.autosave
+
+# IDE
+*.code-workspace
+.idea/
+
+# Build artifacts
+build/
+dist/
