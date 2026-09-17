@@ -44,7 +44,7 @@ The EASE exoskeleton assists lower-limb movement during walking. My thesis focus
 | [`firmware/ease-control-systems/`](firmware/ease-control-systems/) | ESP32-S3 PlatformIO / ESP-IDF project scaffold for HIL bring-up |
 | [`firmware/draft/`](firmware/draft/) | Early prototypes — PID tests, old 4-state FSM, gait plotting script |
 | [`matlab/`](matlab/) | Simulations — joint PID, exoskeleton FSM, battery discharge, fall detection |
-| [`docs/images/`](docs/images/) | Thesis figures — control architecture, HIL rig photos, gait cycle |
+| [`docs/images/`](docs/images/) | Thesis figures — control architecture, HIL testing rig, gait cycle |
 | [`setup/`](setup/) | ESP-IDF devcontainer and Windows USB/WSL flashing guide |
 
 ---
@@ -100,7 +100,7 @@ Run any `.m` script directly in MATLAB. Open `exo_fsm1.slx` in Simulink.
 | --- | --- |
 | Control strategy | ![Control strategy overview](docs/images/control-strategy-overview.png) |
 | Gait model | ![Gait representation](docs/images/gait-representation.png) |
-| HIL rig | ![HIL rig](docs/images/hil-rig-1.jpeg) |
+| HIL testing rig | ![HIL testing rig](docs/images/hil-testing-rig.jpg) |
 | Wiring | ![Wiring harness](docs/images/wiring-harness.jpeg) |
 
 [Gait cycle recording (MP4)](docs/images/gait-cycle.mp4)
