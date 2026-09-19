@@ -1,3 +1,40 @@
+> **Public case study** — firmware and simulations below are a curated thesis snapshot; full team codebase is private.
+
+---
+
+## The hook
+
+An assistive lower-limb exoskeleton needed **gait-aware control** and **bench-validated actuators** before anyone could safely integrate four high-torque drives on a wearer.
+
+## High-level impact
+
+- **Eight-phase gait FSM** per leg aligned to standard locomotion sub-phases.
+- **Four CubeMars actuators** (hip/knee L/R) commanded over **CAN at 1 Mbps**.
+- **ESP32-S3 HIL rig** for **~1 kHz PID** validation with gait trajectory replay.
+- **Five-person team**, **12 sensors** integrated across firmware and bench testing.
+- Graduate thesis documented: [Thesis PDF](docs/ThesisC_Tanmeet_Z5510198.pdf).
+
+## My contribution
+
+- **Control Systems Lead**: owned gait FSM design, CAN motor command path, HIL bring-up, and MATLAB/Simulink models (PID, battery, fall detection).
+- Coordinated sensor integration and firmware milestones with the thesis team.
+- Connected modelling → embedded implementation → physical test.
+
+## Tech and design choices
+
+| Choice | Why |
+| --- | --- |
+| **Per-phase FSM states** (vs single stance/swing split) | Finer gait phases matched assist timing requirements for hip/knee. |
+| **MCP2515 / CAN** to CubeMars | Team motor ecosystem; deterministic broadcast-style command path. |
+| **ESP32-S3 HIL before on-body** | De-risked PID and trajectory timing without wearing the full exo. |
+| **MATLAB/Simulink** alongside Arduino | Faster policy and safety logic iteration before flashing embedded targets. |
+
+## Lesson / twist
+
+**State transitions** that looked correct in simulation **hunted on hardware** when sensor timestamps and CAN latency differed — fixed by aligning transition guards with measured loop time and validating on the HIL rig with logged phase entry/exit, not FSM logic alone on the bench.
+
+---
+
 # Control Systems for Exoskeleton
 
 **Graduate Thesis · UNSW Mechatronics Engineering**
