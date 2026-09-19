@@ -2,7 +2,7 @@
 
 ---
 
-## The hook
+## Problem statement
 
 An assistive lower-limb exoskeleton needed **gait-aware control** and **bench-validated actuators** before anyone could safely integrate four high-torque drives on a wearer.
 
