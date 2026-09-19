@@ -1,4 +1,4 @@
-> **Public case study** — firmware and simulations below are a curated thesis snapshot; full team codebase is private.
+> **Public case study.** Firmware and simulations below are a curated thesis snapshot; full team codebase is private.
 
 ---
 
@@ -8,17 +8,17 @@ An assistive lower-limb exoskeleton needed **gait-aware control** and **bench-va
 
 ## High-level impact
 
-- **Eight-phase gait FSM** per leg aligned to standard locomotion sub-phases.
-- **Four CubeMars actuators** (hip/knee L/R) commanded over **CAN at 1 Mbps**.
-- **ESP32-S3 HIL rig** for **~1 kHz PID** validation with gait trajectory replay.
-- **Five-person team**, **12 sensors** integrated across firmware and bench testing.
-- Graduate thesis documented: [Thesis PDF](docs/ThesisC_Tanmeet_Z5510198.pdf).
+1. **Eight-phase gait FSM** per leg aligned to standard locomotion sub-phases.
+2. **Four CubeMars actuators** (hip/knee L/R) commanded over **CAN at 1 Mbps**.
+3. **ESP32-S3 HIL rig** for **~1 kHz PID** validation with gait trajectory replay.
+4. **Five-person team**, **12 sensors** integrated across firmware and bench testing.
+5. Graduate thesis documented: [Thesis PDF](docs/ThesisC_Tanmeet_Z5510198.pdf).
 
 ## My contribution
 
-- **Control Systems Lead**: owned gait FSM design, CAN motor command path, HIL bring-up, and MATLAB/Simulink models (PID, battery, fall detection).
-- Coordinated sensor integration and firmware milestones with the thesis team.
-- Connected modelling → embedded implementation → physical test.
+1. **Control Systems Lead**: owned gait FSM design, CAN motor command path, HIL bring-up, and MATLAB/Simulink models (PID, battery, fall detection).
+2. Coordinated sensor integration and firmware milestones with the thesis team.
+3. Connected modelling → embedded implementation → physical test.
 
 ## Tech and design choices
 
@@ -29,24 +29,24 @@ An assistive lower-limb exoskeleton needed **gait-aware control** and **bench-va
 | **ESP32-S3 HIL before on-body** | De-risked PID and trajectory timing without wearing the full exo. |
 | **MATLAB/Simulink** alongside Arduino | Faster policy and safety logic iteration before flashing embedded targets. |
 
-## Lesson / twist
+## Lesson
 
-**State transitions** that looked correct in simulation **hunted on hardware** when sensor timestamps and CAN latency differed — fixed by aligning transition guards with measured loop time and validating on the HIL rig with logged phase entry/exit, not FSM logic alone on the bench.
+**State transitions** that looked correct in simulation **hunted on hardware** when sensor timestamps and CAN latency differed. Fixed by aligning transition guards with measured loop time and validating on the HIL rig with logged phase entry/exit, not FSM logic alone on the bench.
 
 ---
 
 # Control Systems for Exoskeleton
 
-**Graduate Thesis · UNSW Mechatronics Engineering**
+**Graduate Thesis, UNSW Mechatronics Engineering**
 
-Control-systems work for the **EASE (Assistive Exoskeleton)** project — gait-phase state machines, CubeMars actuator control over CAN, ESP32-S3 hardware-in-the-loop (HIL) testing, and MATLAB/Simulink simulations for joint PID, battery sizing, and fall detection.
+Control-systems work for the **EASE (Assistive Exoskeleton)** project. gait-phase state machines, CubeMars actuator control over CAN, ESP32-S3 hardware-in-the-loop (HIL) testing, and MATLAB/Simulink simulations for joint PID, battery sizing, and fall detection.
 
-**Author:** Tanmeet Singh Sachdeva · Control Systems Lead  
-**Institution:** UNSW Sydney · Mechatronic Engineering (Honours)
+**Author:** Tanmeet Singh Sachdeva, Control Systems Lead  
+**Institution:** UNSW Sydney, Mechatronic Engineering (Honours)
 
 **Thesis report:** [ThesisC_Tanmeet_Z5510198.pdf](docs/ThesisC_Tanmeet_Z5510198.pdf)
 
-> Team thesis project (EASE Exoskeleton). This repository is a curated public snapshot of firmware, simulations, and documentation from my control-systems contribution — not the full private team codebase.
+> Team thesis project (EASE Exoskeleton). This repository is a curated public snapshot of firmware, simulations, and documentation from my control-systems contribution. not the full private team codebase.
 
 ---
 
@@ -78,11 +78,11 @@ The EASE exoskeleton assists lower-limb movement during walking. My thesis focus
 
 | Path | Description |
 | ---- | ----------- |
-| [`firmware/ease-main/`](firmware/ease-main/) | Arduino Mega gait controller — 8-state FSM, MCP2515 CAN, force sensors |
-| [`firmware/hil-motor-control/`](firmware/hil-motor-control/) | HIL sketch — replays gait profile arrays to four motors over CAN |
+| [`firmware/ease-main/`](firmware/ease-main/) | Arduino Mega gait controller. 8-state FSM, MCP2515 CAN, force sensors |
+| [`firmware/hil-motor-control/`](firmware/hil-motor-control/) | HIL sketch. replays gait profile arrays to four motors over CAN |
 | [`firmware/ease-control-systems/`](firmware/ease-control-systems/) | ESP32-S3 PlatformIO / ESP-IDF project scaffold for HIL bring-up |
-| [`firmware/draft/`](firmware/draft/) | Early prototypes — PID tests, old 4-state FSM, gait plotting script |
-| [`matlab/`](matlab/) | Simulations — joint PID, exoskeleton FSM, battery discharge, fall detection |
+| [`firmware/draft/`](firmware/draft/) | Early prototypes. PID tests, old 4-state FSM, gait plotting script |
+| [`matlab/`](matlab/) | Simulations. joint PID, exoskeleton FSM, battery discharge, fall detection |
 | [`docs/`](docs/) | Thesis report (PDF) and figures |
 | [`docs/images/`](docs/images/) | Control architecture, HIL testing rig, gait cycle |
 | [`setup/`](setup/) | ESP-IDF devcontainer and Windows USB/WSL flashing guide |
@@ -106,7 +106,7 @@ The main controller implements an **8-phase gait model** per leg, aligned with s
 | Mid Swing | Clearance |
 | Terminal Swing | Deceleration before contact |
 
-Each state (in `NewStates/`) defines transition conditions and outputs `LegData` — target hip/knee positions and velocities sent over CAN via `MotorController.hpp`. Communication uses an **MCP2515** transceiver at **1 Mbps** with CubeMars motor IDs for left/right hip and knee joints.
+Each state (in `NewStates/`) defines transition conditions and outputs `LegData`. target hip/knee positions and velocities sent over CAN via `MotorController.hpp`. Communication uses an **MCP2515** transceiver at **1 Mbps** with CubeMars motor IDs for left/right hip and knee joints.
 
 Entry point: `EASE_main.ino` → `MotorController::update()` loop.
 
@@ -116,7 +116,7 @@ Entry point: `EASE_main.ino` → `MotorController::update()` loop.
 
 ### ESP32-S3 scaffold (`firmware/ease-control-systems/`)
 
-PlatformIO project targeting **ESP32 (uPesy WROOM)** with ESP-IDF framework — dev environment for migrating control loops off the Mega. See [`setup/Windows_Setup.md`](setup/Windows_Setup.md) for WSL2 + Docker + USB/IP flashing.
+PlatformIO project targeting **ESP32 (uPesy WROOM)** with ESP-IDF framework. dev environment for migrating control loops off the Mega. See [`setup/Windows_Setup.md`](setup/Windows_Setup.md) for WSL2 + Docker + USB/IP flashing.
 
 ---
 
@@ -124,7 +124,7 @@ PlatformIO project targeting **ESP32 (uPesy WROOM)** with ESP-IDF framework — 
 
 | File | Purpose |
 | ---- | ------- |
-| `pid_joint_control.m` | PID loop for knee joint angle tracking — plots angle and torque response |
+| `pid_joint_control.m` | PID loop for knee joint angle tracking. plots angle and torque response |
 | `exo_fsm.m` | High-level exoskeleton FSM: STANDING → WALKING → EMERGENCY_STOP |
 | `exo_fsm1.slx` | Simulink model of the exoskeleton control system |
 | `battery_simulation.m` | 1-hour battery discharge model (motor + control power draw) |
@@ -151,18 +151,18 @@ Run any `.m` script directly in MATLAB. Open `exo_fsm1.slx` in Simulink.
 
 **Firmware (Arduino Mega / HIL sketch)**
 
-- [Arduino MCP2515 library](https://github.com/autowp/arduino-mcp2515) (CAN)
-- Arduino SPI
+1. [Arduino MCP2515 library](https://github.com/autowp/arduino-mcp2515) (CAN)
+2. Arduino SPI
 
 **Firmware (ESP32 HIL)**
 
-- [PlatformIO](https://platformio.org/) with Espressif 32 platform
-- ESP-IDF (via PlatformIO)
+1. [PlatformIO](https://platformio.org/) with Espressif 32 platform
+2. ESP-IDF (via PlatformIO)
 
 **MATLAB**
 
-- MATLAB R2020b+ (scripts use string arrays and native `switch` on strings)
-- Simulink (for `exo_fsm1.slx` only)
+1. MATLAB R2020b+ (scripts use string arrays and native `switch` on strings)
+2. Simulink (for `exo_fsm1.slx` only)
 
 ---
 
@@ -198,10 +198,10 @@ battery_simulation  % battery sizing plot
 
 ## What is not included
 
-- Full private EASE team repository (GitLab origin)
-- Vendor library archives (install MCP2515 via Arduino Library Manager)
-- Raw IMU log dumps and personal IDE workspace files
-- Thesis marking rubrics, invoices, or administrative documents
+1. Full private EASE team repository (GitLab origin)
+2. Vendor library archives (install MCP2515 via Arduino Library Manager)
+3. Raw IMU log dumps and personal IDE workspace files
+4. Thesis marking rubrics, invoices, or administrative documents
 
 ---
 
